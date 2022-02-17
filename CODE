@@ -65,17 +65,10 @@ with smtplib.SMTP('smtp.gmail.com',587) as smtp:
   test=2
   element=0
   while element<len(info):
-    if test==1:
-      initial=re.findall('.+<organization name>',text)
-      stringa=''.join(initial)                    #mitian
-      end=re.findall(', you.+',text)
-      stringb=''.join(end)
-    else:
-      initial=re.findall('.+<organisation name>',text2)
-      stringa=''.join(initial)                    #nonmitian
-      end=re.findall(', you.+',text2)
-      stringb=''.join(end)
-
+    initial=re.findall('.+<organization name>',text)
+    stringa=''.join(initial)                    
+    end=re.findall(', you.+',text)
+    stringb=''.join(end)
     subject='Invitation:BETA v3.4' #subject of mail
     body=stringa+', '+info[element][1]+stringb #body of mail
     msg=f'Subject: {subject}\n\n{body}'
